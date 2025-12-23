@@ -1,22 +1,22 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useCallback } from 'react';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
 
-  const loginUser = (name, role) => {
+  const loginUser = useCallback((name, role) => {
     const user = {
       id: Date.now(),
       name: name,
       role: role // 'admin' or 'student'
     };
     setCurrentUser(user);
-  };
+  }, []);
 
-  const logoutUser = () => {
+  const logoutUser = useCallback(() => {
     setCurrentUser(null);
-  };
+  }, []);
 
   const isAuthenticated = currentUser !== null;
 

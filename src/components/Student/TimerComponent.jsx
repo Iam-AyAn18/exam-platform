@@ -1,14 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './TimerComponent.css';
 
 const TimerComponent = ({ totalSeconds, onTimeEnd }) => {
   const [remainingSeconds, setRemainingSeconds] = useState(totalSeconds);
+  const onTimeEndRef = useRef(onTimeEnd);
+
+  // Keep the ref updated
+  useEffect(() => {
+    onTimeEndRef.current = onTimeEnd;
+  }, [onTimeEnd]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setRemainingSeconds(prev => {
         if (prev <= 1) {
-          onTimeEnd();
+          if (onTimeEndRef.current) {
+            onTimeEndRef.current();
+          }
           return 0;
         }
         return prev - 1;
@@ -16,7 +24,7 @@ const TimerComponent = ({ totalSeconds, onTimeEnd }) => {
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, [onTimeEnd]);
+  }, []); // Empty dependency array - only run once on mount
 
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { mockTestPapers } from '../data/mockData';
 
 const ExamContext = createContext();
@@ -13,36 +13,36 @@ export const ExamProvider = ({ children }) => {
     setTestPapers(mockTestPapers);
   }, []);
 
-  const addTestPaper = (testPaper) => {
+  const addTestPaper = useCallback((testPaper) => {
     setTestPapers(prev => [...prev, testPaper]);
-  };
+  }, []);
 
-  const updateTestPaper = (id, updatedData) => {
+  const updateTestPaper = useCallback((id, updatedData) => {
     setTestPapers(prev => 
       prev.map(paper => 
         paper.id === id ? { ...paper, ...updatedData } : paper
       )
     );
-  };
+  }, []);
 
-  const deleteTestPaper = (id) => {
+  const deleteTestPaper = useCallback((id) => {
     setTestPapers(prev => prev.filter(paper => paper.id !== id));
-  };
+  }, []);
 
-  const getTestPapers = () => {
+  const getTestPapers = useCallback(() => {
     return testPapers;
-  };
+  }, [testPapers]);
 
-  const getPublishedPapers = () => {
+  const getPublishedPapers = useCallback(() => {
     return testPapers.filter(paper => paper.published === true);
-  };
+  }, [testPapers]);
 
-  const getExamById = (id) => {
+  const getExamById = useCallback((id) => {
     return testPapers.find(paper => paper.id === id);
-  };
+  }, [testPapers]);
 
-  const startExam = (paperId) => {
-    const paper = getExamById(paperId);
+  const startExam = useCallback((paperId) => {
+    const paper = testPapers.find(p => p.id === paperId);
     if (paper) {
       setCurrentExam({
         paperId: paper.id,
@@ -53,12 +53,14 @@ export const ExamProvider = ({ children }) => {
         timeLimit: paper.timeLimit
       });
     }
-  };
+  }, [testPapers]);
 
-  const submitExam = (answers, timeSpent, studentId) => {
+  const submitExam = useCallback((answers, timeSpent, studentId) => {
     if (!currentExam) return null;
 
-    const paper = getExamById(currentExam.paperId);
+    const paper = testPapers.find(p => p.id === currentExam.paperId);
+    if (!paper) return null;
+    
     let score = 0;
     let totalMarks = 0;
 
@@ -87,11 +89,11 @@ export const ExamProvider = ({ children }) => {
     setCurrentExam(null);
     
     return result;
-  };
+  }, [currentExam, testPapers]);
 
-  const getExamResults = (studentId) => {
+  const getExamResults = useCallback((studentId) => {
     return examResults.filter(result => result.studentId === studentId);
-  };
+  }, [examResults]);
 
   return (
     <ExamContext.Provider 

@@ -16,7 +16,8 @@ const ExamTaker = ({ paper, onComplete, onCancel }) => {
 
   useEffect(() => {
     startExam(paper.id);
-  }, [paper.id, startExam]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [paper.id]);
 
   const handleAnswerSelect = (questionId, answerIndex) => {
     setAnswers(prev => ({
