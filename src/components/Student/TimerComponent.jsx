@@ -5,15 +5,9 @@ const TimerComponent = ({ totalSeconds, onTimeEnd }) => {
   const [remainingSeconds, setRemainingSeconds] = useState(totalSeconds);
 
   useEffect(() => {
-    if (remainingSeconds <= 0) {
-      onTimeEnd();
-      return;
-    }
-
     const intervalId = setInterval(() => {
       setRemainingSeconds(prev => {
         if (prev <= 1) {
-          clearInterval(intervalId);
           onTimeEnd();
           return 0;
         }
@@ -22,7 +16,7 @@ const TimerComponent = ({ totalSeconds, onTimeEnd }) => {
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, [remainingSeconds, onTimeEnd]);
+  }, [onTimeEnd]);
 
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
