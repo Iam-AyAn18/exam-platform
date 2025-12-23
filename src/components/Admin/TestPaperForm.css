@@ -1,0 +1,131 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: #1F2937;
+}
+
+.test-paper-form .form-group {
+  margin-bottom: 20px;
+}
+
+.test-paper-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #374151;
+  font-size: 14px;
+}
+
+.test-paper-form input,
+.test-paper-form textarea,
+.test-paper-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #E5E7EB;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.test-paper-form input:focus,
+.test-paper-form textarea:focus,
+.test-paper-form select:focus {
+  outline: none;
+  border-color: #3B82F6;
+}
+
+.test-paper-form input.error,
+.test-paper-form textarea.error,
+.test-paper-form select.error {
+  border-color: #EF4444;
+}
+
+.error-text {
+  color: #EF4444;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.test-paper-form .button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.test-paper-form .cancel-button,
+.test-paper-form .submit-button {
+  flex: 1;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.test-paper-form .cancel-button {
+  background: #F3F4F6;
+  color: #374151;
+}
+
+.test-paper-form .cancel-button:hover {
+  background: #E5E7EB;
+}
+
+.test-paper-form .submit-button {
+  background: #3B82F6;
+  color: white;
+}
+
+.test-paper-form .submit-button:hover {
+  background: #2563EB;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+@media (max-width: 640px) {
+  .modal-content {
+    padding: 24px;
+    width: 95%;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}

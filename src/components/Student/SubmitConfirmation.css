@@ -1,0 +1,82 @@
+.submit-confirm {
+  max-width: 500px;
+}
+
+.confirm-message {
+  color: #6B7280;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.submit-stats {
+  background: #F9FAFB;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.stat-label {
+  color: #6B7280;
+  font-size: 14px;
+}
+
+.stat-value {
+  color: #1F2937;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.warning-message {
+  background: #FEF3C7;
+  color: #92400E;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.submit-confirm .button-group {
+  display: flex;
+  gap: 12px;
+}
+
+.submit-confirm .cancel-button,
+.submit-confirm .confirm-button {
+  flex: 1;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-confirm .cancel-button {
+  background: #F3F4F6;
+  color: #374151;
+}
+
+.submit-confirm .cancel-button:hover {
+  background: #E5E7EB;
+}
+
+.submit-confirm .confirm-button {
+  background: #10B981;
+  color: white;
+}
+
+.submit-confirm .confirm-button:hover {
+  background: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}

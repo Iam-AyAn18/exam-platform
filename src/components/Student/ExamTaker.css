@@ -1,0 +1,263 @@
+.exam-taker {
+  min-height: 100vh;
+  background: #F9FAFB;
+  display: flex;
+  flex-direction: column;
+}
+
+.exam-header {
+  background: white;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.exam-info {
+  flex: 1;
+}
+
+.exam-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1F2937;
+  margin: 0 0 8px 0;
+}
+
+.exam-meta {
+  color: #6B7280;
+  margin: 0;
+  font-size: 14px;
+}
+
+.progress-container {
+  height: 6px;
+  background: #E5E7EB;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #3B82F6 0%, #10B981 100%);
+  transition: width 0.3s ease;
+}
+
+.question-container {
+  flex: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  width: 100%;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.question-number {
+  font-size: 20px;
+  font-weight: bold;
+  color: #3B82F6;
+  margin: 0;
+}
+
+.question-marks {
+  background: #DBEAFE;
+  color: #1E40AF;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.question-text {
+  font-size: 20px;
+  color: #1F2937;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  font-weight: 500;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.option-button {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: white;
+  border: 3px solid #E5E7EB;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  font-size: 16px;
+}
+
+.option-button:hover {
+  border-color: #3B82F6;
+  background: #EFF6FF;
+  transform: translateX(8px);
+}
+
+.option-button.selected {
+  border-color: #3B82F6;
+  background: #DBEAFE;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: #F3F4F6;
+  border-radius: 50%;
+  font-weight: bold;
+  color: #374151;
+  flex-shrink: 0;
+}
+
+.option-button.selected .option-label {
+  background: #3B82F6;
+  color: white;
+}
+
+.option-text {
+  flex: 1;
+  color: #1F2937;
+}
+
+.exam-navigation {
+  background: white;
+  padding: 24px;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.nav-left,
+.nav-center,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cancel-exam-button {
+  padding: 10px 20px;
+  background: white;
+  color: #EF4444;
+  border: 2px solid #EF4444;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cancel-exam-button:hover {
+  background: #FEE2E2;
+}
+
+.answered-count {
+  color: #6B7280;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.nav-button,
+.submit-button {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-button {
+  background: #F3F4F6;
+  color: #374151;
+}
+
+.nav-button:hover:not(:disabled) {
+  background: #E5E7EB;
+}
+
+.nav-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nav-button.primary {
+  background: #3B82F6;
+  color: white;
+}
+
+.nav-button.primary:hover {
+  background: #2563EB;
+}
+
+.submit-button {
+  background: #10B981;
+  color: white;
+}
+
+.submit-button:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+@media (max-width: 768px) {
+  .exam-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .question-container {
+    padding: 32px 16px;
+  }
+
+  .question-text {
+    font-size: 18px;
+  }
+
+  .option-button {
+    padding: 16px;
+  }
+
+  .exam-navigation {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .nav-left,
+  .nav-right {
+    width: 100%;
+  }
+
+  .nav-right {
+    flex-direction: column;
+  }
+
+  .nav-button,
+  .submit-button,
+  .cancel-exam-button {
+    width: 100%;
+  }
+}
